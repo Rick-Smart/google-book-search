@@ -34,11 +34,12 @@ function CreatePostForm() {
     <div>
       <div className="jumbotron">
         <img
-          className="img-fluid img-thumbnail"
-          src="https://images.pexels.com/photos/459688/pexels-photo-459688.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+          style={{ height: "350px", width: "100%"}}
+          className="img-fluid"
+          src="https://thumbs.dreamstime.com/b/panorama-old-books-wooden-shelf-book-shop-library-d-rendering-183052144.jpg"
         />
       </div>
-      <h1>Create a blog post</h1>
+      <h1>Search for a Book</h1>
       <form className="form-group mt-5 mb-5" onSubmit={handleSubmit}>
         <input
           className="form-control mb-5"

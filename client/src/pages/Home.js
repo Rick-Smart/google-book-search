@@ -7,10 +7,12 @@ const Home = () => {
   return (
     <Container fluid>
       <Row>
-        <Col size="md-6">
+        <Col size="md">
           <CreatePostForm />
         </Col>
-        <Col size="md-6 sm-12">
+      </Row>
+      <Row>
+        <Col size="md">
           <PostsList />
         </Col>
       </Row>
