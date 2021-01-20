@@ -9,17 +9,17 @@ import { Card, Button } from "react-bootstrap";
 
 function PostsList() {
   const [state, dispatch] = useStoreContext();
-  
-  const handleSave = (value) => {
-    console.log(value);
 
-    // API.saveBook({
-    //   title: titleRef.current.value,
-    //   authors: bodyRef.current.value,
-    //   description: authorRef.current.value,
-    //   image: imageRef.current.value,
-    //   link: linkRef.current.value,
-    // })
+  const handleSave = (value) => {
+    console.log(value.volumeInfo);
+    const book = value.volumeInfo;
+    API.saveBook({
+      title: book.title,
+      authors: book.authors,
+      description: book.description,
+      image: book.imageLinks.thumbnail,
+      link: book.infoLink,
+    })
     //   .then((result) => {
     //     dispatch({
     //       type: ADD_POST,
@@ -27,8 +27,7 @@ function PostsList() {
     //     });
     //   })
     //   .catch((err) => console.log(err));
-    // titleRef.current.value = "";
-    // bodyRef.current.value = "";
+  
   };
   // useEffect(() => {
   //   getPosts();
@@ -58,7 +57,7 @@ function PostsList() {
                 >
                   View
                 </Button>
-                <Button variant="primary" onClick={() => handleSave( item )}>
+                <Button variant="primary" onClick={() => handleSave(item)}>
                   Save
                 </Button>
               </Card.Body>
