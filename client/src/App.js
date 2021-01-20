@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Nav from "./components/Nav";
 import { StoreProvider } from "./utils/GlobalState";
 import SavedList from "./pages/SavedList";
+import Jumbotron from "./components/Jumbotron"
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <div>
         <StoreProvider>
           <Nav />
+          <Jumbotron />
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/saved" component={SavedList} />

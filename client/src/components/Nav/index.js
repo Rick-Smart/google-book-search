@@ -6,10 +6,13 @@ function Nav() {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a Google Books />
       <a className="navbar-brand" href="/">
-        Search for a Book?
+        Home
       </a>
-      {store.loading ? <a className="navbar-brand ml-auto">Loading...</a> : <></>}
+      <a className="navbar-brand" href="/search">
+        Search
+      </a>
     </nav>
   );
 }
