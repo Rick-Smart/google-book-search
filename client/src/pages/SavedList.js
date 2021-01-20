@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useStoreContext } from "../utils/GlobalState";
 import { REMOVE_FAVORITE, LOADING, UPDATE_FAVORITES } from "../utils/actions";
 
-const FavoritesList = () => {
+const SavedList = () => {
   const [state, dispatch] = useStoreContext();
 
   const getFavorites = () => {
@@ -51,4 +51,4 @@ const FavoritesList = () => {
   );
 };
 
-export default FavoritesList;
+export default SavedList;
