@@ -12,7 +12,7 @@ const Home = () => {
         </Col>
       </Row>
       <Row>
-        <Col size="md">
+        <Col size="sm-12">
           <PostsList />
         </Col>
       </Row>

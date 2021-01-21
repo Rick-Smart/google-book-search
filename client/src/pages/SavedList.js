@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
-import { ListItem, List } from "../components/List";
-import DeleteBtn from "../components/DeleteBtn";
 import { Link } from "react-router-dom";
 import { useStoreContext } from "../utils/GlobalState";
-import { REMOVE_FAVORITE, LOADING, GET_FAVORITE } from "../utils/actions";
+import { REMOVE_FAVORITE, GET_FAVORITE } from "../utils/actions";
 import API from "../utils/API";
 import { Card, Button } from "react-bootstrap";
 
@@ -29,15 +27,16 @@ const FavoritesList = () => {
 
   useEffect(() => {
     getFavorites();
+    // eslint-disable-next-line
   }, [state.savedBooks]);
 
   return (
-    <div className="container mb-5 mt-5">
+    <div className="col-sm-12">
       <h1 className="text-center">Here's All of Your Favorite Books</h1>
       {state.savedBooks.length ? (
         <div>
           {state.savedBooks.map((item) => (
-            <div className="d-flex flex-wrap mb-5 border border-success">
+            <div key={item._id}className="d-flex flex-wrap mb-5 border border-success">
               <Card
                 key={item._id}
                 style={{ width: "17rem" }}

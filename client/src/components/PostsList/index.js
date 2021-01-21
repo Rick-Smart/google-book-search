@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useStoreContext } from "../../utils/GlobalState";
 import API from "../../utils/API";
 import { Card, Button } from "react-bootstrap";
 
 function PostsList() {
+  // eslint-disable-next-line
   const [state, dispatch] = useStoreContext();
 
   const handleSave = (value) => {
