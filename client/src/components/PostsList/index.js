@@ -11,23 +11,23 @@ function PostsList() {
   const [state, dispatch] = useStoreContext();
 
   const handleSave = (value) => {
-    console.log(value.volumeInfo);
     const book = value.volumeInfo;
+
     API.saveBook({
       title: book.title,
-      authors: book.authors,
+      authors: book.authors[0],
       description: book.description,
       image: book.imageLinks.thumbnail,
       link: book.infoLink,
     })
-    //   .then((result) => {
-    //     dispatch({
-    //       type: ADD_POST,
-    //       post: result.data,
-    //     });
-    //   })
-    //   .catch((err) => console.log(err));
-  
+      .then((result) => {
+        console.log(result);
+        // dispatch({
+        //   type: ADD_POST,
+        //   post: result.data,
+        // });
+      })
+      .catch((err) => console.log(err));
   };
   // useEffect(() => {
   //   getPosts();

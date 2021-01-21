@@ -4,7 +4,7 @@ import {
   REMOVE_POST,
   UPDATE_POSTS,
   RENDER_RESULTS,
-  ADD_FAVORITE,
+  GET_FAVORITE,
   UPDATE_FAVORITES,
   REMOVE_FAVORITE,
   LOADING,
@@ -38,7 +38,7 @@ const reducer = (state, action) => {
           return post._id !== action._id;
         }),
       };
-    case ADD_FAVORITE:
+    case GET_FAVORITE:
       return {
         ...state,
         favorites: [action.post, ...state.favorites],
