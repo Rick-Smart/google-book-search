@@ -7,7 +7,6 @@ import { REMOVE_FAVORITE, LOADING, GET_FAVORITE } from "../utils/actions";
 import API from "../utils/API";
 import { Card, Button } from "react-bootstrap";
 
-
 const FavoritesList = () => {
   const [state, dispatch] = useStoreContext();
   const getFavorites = () => {
@@ -20,27 +19,42 @@ const FavoritesList = () => {
   };
 
   const removeFromFavorites = (id) => {
-    dispatch({});
+    API.deleteBook(id).then(({ data }) =>
+      dispatch({
+        type: REMOVE_FAVORITE,
+        data: { data, state },
+      })
+    );
   };
 
   useEffect(() => {
     getFavorites();
-  }, []);
-  
+  }, [state.savedBooks]);
+
   return (
     <div className="container mb-5 mt-5">
-      <h1 className="text-center">Here's All of Your Favorite Posts</h1>
+      <h1 className="text-center">Here's All of Your Favorite Books</h1>
       {state.savedBooks.length ? (
         <div>
           {state.savedBooks.map((item) => (
-            <div>
-              <Card key={item._id} style={{ width: "18rem" }}>
-                <Card.Body>
-                  <Card.Img variant="top" src={item.image} />
-                  <Card.Title>
-                    {item.title} by {item.authors}
-                  </Card.Title>
-                  <Card.Text>{item.description}</Card.Text>
+            <div className="d-flex flex-wrap mb-5 border border-success">
+              <Card
+                key={item._id}
+                style={{ width: "17rem" }}
+                className="border-end-success"
+              >
+                <Card.Title className="mb-4 ml-2">
+                  {item.title} by {item.authors}
+                </Card.Title>
+                <Card.Img
+                  style={{ width: "10rem" }}
+                  variant="top"
+                  src={item.image}
+                  className="ml-5 mb-2"
+                />
+              </Card>
+              <Card.Body style={{ width: "18rem" }}>
+                <div className="float-right">
                   <Button
                     href={item.link}
                     target="_blank"
@@ -55,8 +69,10 @@ const FavoritesList = () => {
                   >
                     Delete
                   </Button>
-                </Card.Body>
-              </Card>
+                  <br></br>
+                </div>
+                <Card.Text className="mt-5">{item.description}</Card.Text>
+              </Card.Body>
             </div>
           ))}
         </div>
@@ -64,9 +80,10 @@ const FavoritesList = () => {
         <h3>You haven't added any favorites yet!</h3>
       )}
       <div className="mt-5">
-        <Link to="home">Back to home</Link>
+        <Link to="/">Back to home</Link>
       </div>
     </div>
   );
 };
+
 export default FavoritesList;

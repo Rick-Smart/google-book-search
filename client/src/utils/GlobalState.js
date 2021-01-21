@@ -41,8 +41,7 @@ const reducer = (state, action) => {
     case GET_FAVORITE:
       return {
         ...state,
-        favorites: [action.post, ...state.favorites],
-        loading: false,
+        savedBooks: action.data,
       };
     case UPDATE_FAVORITES:
       return {
@@ -53,8 +52,8 @@ const reducer = (state, action) => {
     case REMOVE_FAVORITE:
       return {
         ...state,
-        favorites: state.favorites.filter((post) => {
-          return post._id !== action._id;
+        savedBooks: action.data.state.savedBooks.filter((item) => {
+          return item._id !== action.data._id;
         }),
       };
     case LOADING:
@@ -77,6 +76,7 @@ const StoreProvider = ({ value = [], ...props }) => {
       image: "",
       link: "",
     },
+    savedBooks: [],
   });
   return <Provider value={[state, dispatch]} {...props} />;
 };
