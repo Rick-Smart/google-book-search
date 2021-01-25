@@ -22,8 +22,6 @@ function PostsList() {
 
   return (
     <div>
-      <h1>All Blog Posts</h1>
-      <h3 className="mb-5 mt-5">Click on a post to view</h3>
       {state.searchResults.length ? (
         <>
           {state.searchResults.map((item) => (

@@ -2,21 +2,22 @@ import React, { useRef } from "react";
 import { useStoreContext } from "../../utils/GlobalState";
 import { RENDER_RESULTS } from "../../utils/actions";
 
-
 const Base_URL = "https://www.googleapis.com/books/v1/volumes?q=";
 
 function CreatePostForm() {
   const searchRef = useRef();
   // eslint-disable-next-line
   const [state, dispatch] = useStoreContext();
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
     const query = Base_URL + searchRef.current.value;
     fetch(query)
       .then((data) => data.json())
       .then((data) => {
-        if (data.length > 0) {
+        console.log(data);
+        if (data.items.length > 0) {
           dispatch({
             type: RENDER_RESULTS,
             payload: data,
